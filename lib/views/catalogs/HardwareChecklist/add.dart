@@ -33,53 +33,64 @@ class _AddHL extends State<AddHL> {
       ),
       body: Form(
         key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Nombre',
-              ),
-              controller: controllerName,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Code',
-              ),
-              controller: controllercode,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('guardando datos')),
-                    );
-                    String name = controllerName.text;
-                    String code = controllercode.text;
-
-                    Navigator.pop(context, Data(name: name, code: code));
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Nombre',
+                ),
+                controller: controllerName,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
                   }
+                  return null;
                 },
-                child: const Text('Guardar'),
               ),
-            ),
-          ],
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Code',
+                ),
+                controller: controllercode,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('guardando datos')),
+                      );
+                      String name = controllerName.text;
+                      String code = controllercode.text;
+
+                      Navigator.pop(context, Data(name: name, code: code));
+                    }
+                  },
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(
+                      const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                    ),
+                    textStyle: MaterialStateProperty.all(
+                      const TextStyle(fontSize: 16),
+                    ),
+                  ),
+                  child: const Text('Guardar'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
