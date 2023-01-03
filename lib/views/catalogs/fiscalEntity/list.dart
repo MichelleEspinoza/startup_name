@@ -1,5 +1,4 @@
 import 'package:startup_name/views/message_response.dart';
-import 'package:startup_name/views/catalogs/fiscalEntity/modify.dart';
 import 'package:startup_name/views/catalogs/fiscalEntity/add.dart';
 import 'package:flutter/material.dart';
 
@@ -62,8 +61,10 @@ class _MyHomePage extends State<MyHomePageF> {
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
-              Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => Modify(datas[index])))
+              Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => AddFE(data: datas[index])))
                   .then((newContact) {
                 if (newContact != null) {
                   setState(() {

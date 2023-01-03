@@ -1,5 +1,4 @@
 import 'package:startup_name/views/message_response.dart';
-import 'package:startup_name/views/catalogs/HardwareChecklist/modify.dart';
 import 'package:startup_name/views/catalogs/HardwareChecklist/add.dart';
 import 'package:flutter/material.dart';
 
@@ -29,8 +28,10 @@ class _MyHomePage extends State<MyHomePage> {
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
-              Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => Modify(datas[index])))
+              Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => AddHL(data: datas[index])))
                   .then((newContact) {
                 if (newContact != null) {
                   setState(() {
